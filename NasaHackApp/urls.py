@@ -15,7 +15,35 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from socialusers import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('home/', views.home, name='home'),
+    path('list/', views.list, name='list'),
+    path('list/detail/<int:article_id>/', views.detail, name='story-detail'),
+    
+    path('profiles/', views.profile, name='profiles'),
+    path('profile/<int:user_id>/', views.profile, name='profile'),
+    path('my-profile/', views.my_profile, name='my-profile'),
+    path('create/', views.create, name='create'),
+    
+    path('maps/',views.maps ,name='maps'),
+    path('map/<int:map_is>/',views.map_detail ,name='map-detail'),
+    path('map/<int:map_is>/camp/<int:camp_id>/',views.camp_detail ,name='cap-detail'),
+
+    path('quests/', views.quests, name='quests'),
+    path('quest-detail/<int:quest_id>/', views.quest_detail, name='quest-detail'),
+
+    path('signup/',views.signup ,name='signup'),
+    path('signin/',views.signin ,name='signin'),
+    path('signout/',views.signout ,name='signout'),
+    path('no-access/',views.no_access ,name='no-access'),
+
 ]
+
+if settings.DEBUG:
+    urlpatterns+=static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
