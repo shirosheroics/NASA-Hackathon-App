@@ -1,11 +1,10 @@
-
 {% extends "base.html" %}
 
 {% block title %}SETTEL-SAT{% endblock title %}
 
 {% block content %}
 
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel ">
+<div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel ">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -43,17 +42,34 @@
 
 <hr class="m-0">
 
-<div class="container-fluid p-0">
-  <div class="card">
+<div class="container  mt-3 ">
+  <div class="row">
+      {% for story in stories %}
+      <div class="col-md-4">
+          <div class="card offwhite2bg shadow-lg text-dark my-card m-3 p-3">
+            {% if story.img %}
+              <img class="card-img-top rounded" src="{{story.img.url}}" >
+            {% endif %}
+
+            <div class="card-body">
+              <h5 class="card-title">{{story.name}}</h5>
+              
+            </div>
+            <ul class=" list-group list-group-flush">
+              <li class="list-group-item text-right offwhite2bg">
+                  <a href="{% url 'story-detail' story.id %}" class="btn btn-outline-dark">View</a>
+              </li>
+            </ul>
+          </div>
+      </div>
+
+      {% endfor %}
+</div>
 
   </div>
 
-  <hr class="m-0">
-
- 
-
 </div>
-
+  <hr class="m-0">
 
 
 {% endblock content %}

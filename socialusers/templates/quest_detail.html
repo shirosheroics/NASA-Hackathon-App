@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Detail{% endblock title %}
+
+{% block content %}
+
+    <div class=" mt-5 text-white" >
+    <div class="container">
+      <h1>{{quest.name}}</h1>
+        <hr class="m-5">
+
+    <p>{{quest.description|linebreaksbr}}</p>
+    <p><h3>Quest locations: {{quest.location}} </h3></p>
+    <p><h3>Quest points : {{quest.points}} </h3></p>
+    <hr class="m-5">
+
+ 	      <div class="container">
+
+    <p><img class="rounded w-75" src="{{quest.stats1.url}}"></p>
+    <p><img class="rounded w-750" src="{{quest.stats2.url}}"></p>
+    {% if camp.img %}
+    <p><img class="rounded w-75" src="{{quest.stats3.url}}"></p>
+    {%endif%}
+    
+</div>
+<h1> Tasks</h1>
+<hr>
+<div class="container  mt-3 ">
+  <div class="row">
+      {% for task in tasks %}
+      <div class="col-md-4">
+          <div class="card offwhite2bg shadow-lg text-dark my-card m-3 p-3">
+            {% if task.img %}
+              <img class="card-img-top rounded" src="{{task.img.url}}" >
+            {% endif %}
+
+            <div class="card-body">
+              <h5 class="card-title">{{task.name}}</h5>
+              <h5 class="card-text">{{task.description}}</h5>
+
+            </div>
+          </div>
+      </div>
+
+      {% endfor %}
+</div>
+</div>
+<hr>
+<h1> Materials </h1>
+<div class="container  mt-3 ">
+  <div class="row">
+      {% for material in materials %}
+      <div class="col-md-4">
+          <div class="card offwhite2bg shadow-lg text-dark my-card m-3 p-3">
+            {% if material.img %}
+              <img class="card-img-top rounded" src="{{material.img.url}}" >
+            {% endif %}
+
+            <div class="card-body">
+              <h5 class="card-title">{{material.name}}</h5>
+              <h5 class="card-text">{{material.description}}</h5>
+
+            </div>
+          </div>
+      </div>
+
+      {% endfor %}
+</div>
+</div>
+  </div>
+    <p><img class="img-responsive overlay gred" src="{{quest.img.url}}" style="width:100%;  "></p>
+   </div>
+
+
+{% endblock content %}
+
+

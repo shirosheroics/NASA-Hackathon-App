@@ -48,6 +48,14 @@ def profile(request, profile_id):
     }
     return render(request,'profile.html',context)
 
+
+def profiles(request):
+    profiles = Profile.objects.all()
+    context = {
+        'profiles':profiles,
+    }
+    return render(request,'profiles.html',context)
+
 def create(request):
     if request.user.is_anonymous:
         return redirect('signin')
@@ -74,7 +82,7 @@ def maps(request):
 
 def map_detail(request, map_id):
     map_ = Maped.objects.get(id = map_id)
-    camps = camps.objects.all()
+    camps = Camp.objects.all()
     context = {
         'map': map_,
         'camps': camps,
@@ -144,7 +152,7 @@ def signin(request):
             auth_user = authenticate(username=username, password=password)
             if auth_user is not None:
                 login(request, auth_user)
-                return redirect('list')
+                return redirect('home')
     context = {
         "form":form
     }

@@ -4,31 +4,16 @@
 
 {% block content %}
 
-<br>
-<div class="card">
-  <h5 class="card-header">Detail Info</h5>
-  {% if restaurant.logo %}
-    <img class="card-img-top" src="{{restaurant.logo.url}}" alt="">
-  {% endif %}
-  <div class="card-body">
-    <h5 class="card-title">{{restaurant.name}}</h5>
-    <p class="card-text">{{restaurant.description|linebreaks}}</p>
+    <div class=" mt-5 text-white" >
+    <div class="container">
+      <h1>{{story.name}}</h1>
+        <hr class="m-5">
+
+    <p>{{story.description|linebreaksbr}}</p>
   </div>
-  <div class="card-body">
-    <div class="row text-center">
-      {% if request.user.is_staff %}
-        <div class="col-md-4">
-            <a href="{% url 'restaurant-update' restaurant.id %}" class="btn btn-outline-primary btn-block">Update</a>
-        </div>
-        <div class="col-md-4">
-            <a href="{% url 'restaurant-delete' restaurant.id %}" class="btn btn-outline-danger btn-block">Delete</a>
-        </div>
-      {% elif request.user == restaurant.owner %}
-        <div class="col-md-6">
-            <a href="{% url 'restaurant-update' restaurant.id %}" class="btn btn-outline-primary btn-block">Update</a>
-        </div>
-      {% endif %}
-    </div>
-  </div>
-</div>
+    <p><img class="img-responsive overlay gred" src="{{story.img.url}}" style="width:100%;  "></p>
+   </div>
+
 {% endblock content %}
+
+

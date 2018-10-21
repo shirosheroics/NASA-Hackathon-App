@@ -4,30 +4,30 @@
 
 {% block content %}
 
+
 <div class="card bg-dark  text-white w-100 shadow-lg" >
-  <img class="card-img" style="opacity: .5; " src="/media/refugee-camp-in-Ethiopias-014.jpg" alt="Card image">
+  <img class="card-img" style="opacity: .5; " src="/media/NOAA-vegetation-map.png" alt="Card image">
   <div class="card-img-overlay">
-    <h1 class="card-title text-center p-5" style="font-size:450%;">IDPs Camps</h1>
+    <h1 class="card-title text-center p-5" style="font-size:450%;">World Orgnizations</h1>
   </div>
 </div>
 
-
 <div class="container  mt-3 ">
   <div class="row">
-      {% for camp in camps %}
+      {% for profile in profiles %}
       <div class="col-md-4">
           <div class="card offwhite2bg shadow-lg text-dark my-card m-3 p-3">
-            {% if camp.img %}
-              <img class="card-img-top rounded" src="{{camp.img.url}}" >
+            {% if profile.img %}
+              <img class="card-img-top rounded" src="{{profile.img.url}}" >
             {% endif %}
 
             <div class="card-body">
-              <h5 class="card-title">{{camp.name}}</h5>
+              <h5 class="card-title">{{profile.name}}</h5>
               
             </div>
             <ul class=" list-group list-group-flush">
               <li class="list-group-item text-right offwhite2bg">
-                  <a href="{% url 'camp-detail' camp.id %}" class="btn btn-outline-dark">View</a>
+                  <a href="{% url 'profile' profile.id %}" class="btn btn-outline-dark">View</a>
               </li>
             </ul>
           </div>

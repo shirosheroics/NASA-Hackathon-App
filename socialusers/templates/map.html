@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Detail{% endblock title %}
+
+{% block content %}
+
+<div class="card bg-dark  text-white w-100 shadow-lg" >
+  <img class="card-img" style="opacity: .5; " src="/media/NOAA-vegetation-map.png" alt="Card image">
+  <div class="card-img-overlay">
+    <h1 class="card-title text-center p-5" style="font-size:450%;">World Map on IDPs</h1>
+  </div>
+</div>
+
+<div class="container  mt-3 ">
+  <div class="row">
+      {% for map in maps %}
+      <div class="col-md-4">
+          <div class="card offwhite2bg shadow-lg text-dark my-card m-3 p-3">
+            {% if map.img %}
+              <img class="card-img-top rounded" src="{{map.img.url}}" >
+            {% endif %}
+
+            <div class="card-body">
+              <h5 class="card-title">{{map.name}}</h5>
+              
+            </div>
+            <ul class=" list-group list-group-flush">
+              <li class="list-group-item text-right offwhite2bg">
+                  <a href="{% url 'map-detail' map.id %}" class="btn btn-outline-dark">View</a>
+              </li>
+            </ul>
+          </div>
+      </div>
+
+      {% endfor %}
+</div>
+</div>
+
+{% endblock content %}
+
+
+
+
+

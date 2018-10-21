@@ -25,14 +25,14 @@ urlpatterns = [
     path('list/', views.list, name='list'),
     path('list/detail/<int:article_id>/', views.detail, name='story-detail'),
     
-    path('profiles/', views.profile, name='profiles'),
+    path('profiles/', views.profiles, name='profiles'),
     path('profile/<int:user_id>/', views.profile, name='profile'),
     path('my-profile/', views.my_profile, name='my-profile'),
     path('create/', views.create, name='create'),
     
     path('maps/',views.maps ,name='maps'),
-    path('map/<int:map_is>/',views.map_detail ,name='map-detail'),
-    path('map/<int:map_is>/camp/<int:camp_id>/',views.camp_detail ,name='cap-detail'),
+    path('map/<int:map_id>/',views.map_detail ,name='map-detail'),
+    path('map/<int:map_id>/camp/<int:camp_id>/',views.camp_detail ,name='camp-detail'),
 
     path('quests/', views.quests, name='quests'),
     path('quest-detail/<int:quest_id>/', views.quest_detail, name='quest-detail'),

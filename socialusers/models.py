@@ -19,7 +19,7 @@ class Profile(models.Model):
 	points = models.IntegerField()
 	verified = models.BooleanField(choices = CHOICES, default =0)
 	def __str__(self):
-		return self.name
+		return self.owner.first_name
 
 class Hazerd(models.Model):
 	name = models.CharField(max_length=120)
@@ -83,7 +83,7 @@ class Camp(models.Model):
 	location = models.CharField(max_length=250)
 	description = models.TextField()
 	img = models.ImageField(null=True, blank=True)
-	number = models.DecimalField(max_digits=6, decimal_places=3)
+	number = models.DecimalField(max_digits=10, decimal_places=2)
 
 	def __str__(self):
 		return self.name
